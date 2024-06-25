@@ -19,12 +19,23 @@ const printLength = () => {
 rangeElement.addEventListener('input', printLength);
 
 //PASSWORD
+const randomNumber = () => {
+  const randomNumber = Math.floor(Math.random() * characters.length);
+  return randomNumber;
+};
+
+const randomCharacter = () => {
+  const randomPosition = randomNumber();
+  const randomCharacter = characters.charAt(randomPosition);
+  return randomCharacter;
+};
+
 const getPassword = () => {
   password = '';
   for (let index = 0; index < rangeElement.value; index++) {
-    const randomNumber = Math.floor(Math.random() * characters.length);
-
-    password += characters.charAt(randomNumber);
+    //como esta funcion se ejecuta en el bucle genera diferentes numeros random
+    const randomCharacter = randomCharacter();
+    password += randomCharacter;
   }
 
   passwordElement.value = password;
